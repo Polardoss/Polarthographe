@@ -4,9 +4,9 @@
 ; ============================================================
 ;  Polarthographe - correcteur automatique de francais (local, via LanguageTool)
 ;
-;  Ctrl+Alt+V -> mode rapide : corrige tout automatiquement
+;  Ctrl+Alt+C -> mode rapide : corrige tout automatiquement
 ;                (prend toujours la 1ere suggestion, pas d'interruption)
-;  Ctrl+Alt+C -> mode avec choix : quand une faute a plusieurs
+;  Ctrl+Alt+V -> mode avec choix : quand une faute a plusieurs
 ;                suggestions possibles, un petit menu te laisse choisir
 ;
 ;  (Ctrl+Shift+C n'est pas utilise : c'est le raccourci natif "Inspecter
@@ -35,11 +35,11 @@ LogLine(msg) {
     try FileAppend(FormatTime(, "yyyy-MM-dd HH:mm:ss") . "  " . msg . "`n", LOG_FILE, "UTF-8")
 }
 
-LogLine("=== Polarthographe demarre (PID " . ProcessExist() . "). Ctrl+Alt+V = rapide, Ctrl+Alt+C = avec choix ===")
-TrayTip("Polarthographe actif", "Ctrl+Alt+V : rapide`nCtrl+Alt+C : avec choix des suggestions", 1)
+LogLine("=== Polarthographe demarre (PID " . ProcessExist() . "). Ctrl+Alt+C = rapide, Ctrl+Alt+V = avec choix ===")
+TrayTip("Polarthographe actif", "Ctrl+Alt+C : rapide`nCtrl+Alt+V : avec choix des suggestions", 1)
 
-^!v::CorrigerSelection(false)
-^!c::CorrigerSelection(true)
+^!c::CorrigerSelection(false)
+^!v::CorrigerSelection(true)
 
 ; ==================== Fonction principale ====================
 ; interactive = true  -> propose un menu de choix pour les fautes ambigues

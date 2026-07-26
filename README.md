@@ -20,8 +20,8 @@ Deux raccourcis, deux modes :
 
 | Raccourci | Mode | Comportement |
 |---|---|---|
-| **Ctrl+Alt+V** | Rapide | Corrige tout automatiquement, prend toujours la meilleure suggestion, aucune interruption |
-| **Ctrl+Alt+C** | Avec choix | Pour chaque faute ayant plusieurs suggestions possibles (souvent les fautes d'orthographe pure), un petit menu te laisse choisir la bonne |
+| **Ctrl+Alt+C** | Rapide | Corrige tout automatiquement, prend toujours la meilleure suggestion, aucune interruption |
+| **Ctrl+Alt+V** | Avec choix | Pour chaque faute ayant plusieurs suggestions possibles (souvent les fautes d'orthographe pure), un petit menu te laisse choisir la bonne |
 
 > `Ctrl+Shift+C` n'est volontairement pas utilisé : c'est le raccourci natif "Inspecter l'élément" dans la quasi-totalité des navigateurs (Chrome, Edge, Opera, Firefox), qui l'intercepte avant qu'AutoHotkey ne le voie.
 
@@ -61,7 +61,7 @@ Le script `install.ps1` :
 ## Utilisation
 
 1. Sélectionne du texte dans n'importe quelle application.
-2. Appuie sur **Ctrl+Alt+V** (rapide) ou **Ctrl+Alt+C** (avec choix).
+2. Appuie sur **Ctrl+Alt+C** (rapide) ou **Ctrl+Alt+V** (avec choix).
 3. Une bulle indique la progression puis le résultat ("3 correction(s) appliquée(s)").
 4. Le texte sélectionné est remplacé par sa version corrigée. `Ctrl+Z` annule si besoin.
 
@@ -74,8 +74,8 @@ LT_URL := "http://localhost:8081/v2/check"   ; adresse du serveur LanguageTool
 LT_LANG := "fr"                              ; langue
 LT_TIMEOUT_MS := 8000                        ; delai max d'attente de l'API
 
-^!v::CorrigerSelection(false)   ; Ctrl+Alt+V = mode rapide
-^!c::CorrigerSelection(true)    ; Ctrl+Alt+C = mode avec choix
+^!c::CorrigerSelection(false)   ; Ctrl+Alt+C = mode rapide
+^!v::CorrigerSelection(true)    ; Ctrl+Alt+V = mode avec choix
 ```
 
 Pour changer un raccourci, modifie le préfixe avant `c::` :

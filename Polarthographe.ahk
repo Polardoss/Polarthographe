@@ -4,12 +4,16 @@
 ; ============================================================
 ;  Polarthographe - correcteur automatique de francais (local, via LanguageTool)
 ;
-;  Ctrl+Shift+C -> mode rapide : corrige tout automatiquement
-;                  (prend toujours la 1ere suggestion, pas d'interruption)
-;  Ctrl+Alt+C   -> mode avec choix : quand une faute a plusieurs
-;                  suggestions possibles, un petit menu te laisse choisir
+;  Ctrl+Alt+V -> mode rapide : corrige tout automatiquement
+;                (prend toujours la 1ere suggestion, pas d'interruption)
+;  Ctrl+Alt+C -> mode avec choix : quand une faute a plusieurs
+;                suggestions possibles, un petit menu te laisse choisir
 ;
-;  Pour changer un raccourci : modifie "^!c::" ou "^+c::" ci-dessous.
+;  (Ctrl+Shift+C n'est pas utilise : c'est le raccourci natif "Inspecter
+;  l'element" dans la quasi-totalite des navigateurs, qui l'intercepte
+;  avant ce script.)
+;
+;  Pour changer un raccourci : modifie "^!c::" ou "^!v::" ci-dessous.
 ;  Syntaxe AutoHotkey : ^ = Ctrl, ! = Alt, + = Shift, # = Win.
 ; ============================================================
 
@@ -31,10 +35,10 @@ LogLine(msg) {
     try FileAppend(FormatTime(, "yyyy-MM-dd HH:mm:ss") . "  " . msg . "`n", LOG_FILE, "UTF-8")
 }
 
-LogLine("=== Polarthographe demarre (PID " . ProcessExist() . "). Ctrl+Shift+C = rapide, Ctrl+Alt+C = avec choix ===")
-TrayTip("Polarthographe actif", "Ctrl+Shift+C : rapide`nCtrl+Alt+C : avec choix des suggestions", 1)
+LogLine("=== Polarthographe demarre (PID " . ProcessExist() . "). Ctrl+Alt+V = rapide, Ctrl+Alt+C = avec choix ===")
+TrayTip("Polarthographe actif", "Ctrl+Alt+V : rapide`nCtrl+Alt+C : avec choix des suggestions", 1)
 
-^+c::CorrigerSelection(false)
+^!v::CorrigerSelection(false)
 ^!c::CorrigerSelection(true)
 
 ; ==================== Fonction principale ====================
